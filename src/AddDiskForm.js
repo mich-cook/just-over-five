@@ -19,6 +19,7 @@ class AddDiskForm extends Component {
   render() {
     return (
       <form onSubmit={this.submit}>
+        <h2>Add Disk Form Component</h2>
         <label>Disk Title:
           <input type="text" name="title" onChange={this.newTitle} />
         </label>
