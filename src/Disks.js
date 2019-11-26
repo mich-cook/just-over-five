@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
 import DiskListItem from './DiskListItem';
 
+import ListDisks from './ListDisks';
+
 class Disks extends Component {
+
+  constructor() {
+    super();
+    this.deleteDisk = this.deleteDisk.bind(this);
+    this.state = {
+      currentlyProcessing: false,
+      collection: "Family",
+      data: [],
+      loading: false
+    };
+  }
 
   static defaultProps = {
     games: [
@@ -9,12 +22,6 @@ class Disks extends Component {
     ]
   };
 
-  state = {
-    currentlyProcessing: false,
-    collection: "Family",
-    data: [],
-    loading: false
-  };
 
   componentDidMount() {
     this.setState({loading: true});
@@ -44,16 +51,29 @@ class Disks extends Component {
     }));
   };
 
+  deleteDisk(which) {
+    let tmpDisks = this.state.data;
+    tmpDisks = tmpDisks.filter(function(value, index, arr) {
+      return value !== which;
+    });
+    console.log(tmpDisks);
+
+    this.setState({ data: tmpDisks });
+  };
+
   render() {
     const games = this.state.data;
 
     return (
       <div>
         <h1>Disks are { this.state.currentlyProcessing ? '' : 'NOT '}being processed at the moment</h1>
+        <h2>First Way of Displaying Disks</h2>
         <ul style={{color: this.props.color }}>
           { games.map((game,i) => <DiskListItem key={i} info={game} collection={this.state.collection} />) }
         </ul>
         <button onClick={this.toggleProcessing}>{ this.state.currentlyProcessing ? 'Stop ' : 'Start ' }Processing</button>
+        <h2>Second Way of Handling Disks</h2>
+        <ListDisks disks={this.state.data} collection={this.state.collection} deleteDisk={this.deleteDisk}/>
       </div>
     );
 
