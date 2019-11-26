@@ -9,17 +9,11 @@ import AddDiskForm from './AddDiskForm';
 
 import * as serviceWorker from './serviceWorker';
 
-const diskList = [
-  { "title": "BD", "games": ["Boulder Dash"], "blocksFree": 400 },
-  { "title": "impossible", "games": ["Impossible Mission"], "blocksFree": 257 },
-  { "title": "archon2", "games": ["Adept: Archon 2"], "blocksFree": 575}
-];
-
 ReactDOM.render(<div>
 	<Disk game="DROL" />
 	<Disk game="Pogo Joe" />
 	<Disk game="Choplifter" />
-    <Disks games={diskList} />
+    <Disks />
     <AddDiskForm />
 </div>, document.getElementById('disks'));
 

@@ -1,0 +1,22 @@
+{ "disks": [
+  {
+    "title": "BD",
+    "games": ["Boulder Dash"],
+    "blocksFree": 400
+  },
+  {
+    "title": "impossible",
+    "games": ["Impossible Mission"],
+    "blocksFree": 257
+  },
+  {
+    "title": "archon2",
+    "games": ["Adept: Archon 2"],
+    "blocksFree": 575
+  },
+  {
+    "title": "ff",
+    "games": [ "Forbidden Forrest" ],
+    "blocksFree": 45
+  }
+]}

@@ -19,6 +19,18 @@ class Disks extends Component {
   componentDidMount() {
     this.setState({loading: true});
     // fetch data here when we have it fetchable
+    const url = './disks.json';
+    this.setState({ "loading": true });
+    fetch(url)
+      .then(response => response.json())
+      .then(result => {
+        const disks = result.disks.map(disk => {
+          return disk;
+        });
+        this.setState({ data: disks, loading: false });
+      });
+
+
     console.log("A Disks component mounted.");
   };
 
@@ -33,7 +45,7 @@ class Disks extends Component {
   };
 
   render() {
-	const { games } = this.props; 
+    const games = this.state.data;
 
     return (
       <div>
