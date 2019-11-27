@@ -14,6 +14,7 @@ class Disks extends Component {
     this.hideAddDiskForm = this.hideAddDiskForm.bind(this);
     this.addDisk = this.addDisk.bind(this);
     this.changeOrder = this.changeOrder.bind(this);
+    this.searchDisks = this.searchDisks.bind(this);
     this.state = {
       currentlyProcessing: false,
       collection: "Family",
@@ -23,7 +24,10 @@ class Disks extends Component {
 
 /* sorting */
       orderBy: 'title',
-      orderDir: 'asc'
+      orderDir: 'asc',
+
+/* filtering */
+      keyword: ''
     };
   }
 
@@ -100,6 +104,10 @@ class Disks extends Component {
     });
   }
 
+  searchDisks(value) {
+    this.setState({ keyword: value });
+  }
+
   render() {
     const games = this.state.data;
 
@@ -109,12 +117,23 @@ class Disks extends Component {
       order = -1;
     }
 
-    sortedDisks.sort((a,b) => {
+    sortedDisks = sortedDisks.sort((a,b) => {
       if(a[this.state.orderBy] < b[this.state.orderBy]) {
         return -1 * order;
       } else {
         return 1 * order;
       }
+    }).filter(disk => {
+      return (
+// TODO: handle searching games arrays
+// TODO: decide and handle matching blocks free
+        disk['title'].toLowerCase()
+        .includes(this.state.keyword.toLowerCase()) /* || 
+        disk['game'].toLowerCase()
+        .includes(this.state.keyword.toLowerCase()) || 
+        disk['blocksFree'].toLowerCase
+        .includes(this.state.keyword.toLowerCase()) || */
+      );
     });
 
     return (
@@ -129,7 +148,7 @@ class Disks extends Component {
         <ListDisks disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk}/>
         <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
         <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
-        <SearchDisks orderBy={this.state.orderBy} orderDir={this.state.orderDir} changeOrder={this.changeOrder} />
+        <SearchDisks orderBy={this.state.orderBy} orderDir={this.state.orderDir} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />
       </div>
     );
 

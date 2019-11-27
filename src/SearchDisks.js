@@ -8,7 +8,7 @@ class SearchDisks extends Component {
     return (
       <form>
         <label>
-          <input type="text" name="keyword" placeholder="keyword" onChange={ e => this.props.changeOrder} />
+          <input type="text" name="keyword" placeholder="keyword" onChange={ e => this.props.searchDisks(e.target.value)} />
         </label>
         <select defaultValue={'DEFAULT'} onChange={ e => this.props.changeOrder(e)}>
           <option value={this.props.orderBy === 'title' ? 'DEFAULT' : 'title'}>Title</option>
