@@ -17,7 +17,11 @@ class Disks extends Component {
       collection: "Family",
       data: [],
       loading: false,
-      showAddDiskForm: false
+      showAddDiskForm: false,
+
+/* sorting */
+      orderBy: 'title',
+      orderDir: 'asc'
     };
   }
 
@@ -85,6 +89,20 @@ class Disks extends Component {
   render() {
     const games = this.state.data;
 
+    let order = 1; // ascending by default
+    let sortedDisks = this.state.data; // games;
+    if (this.state.orderDir !== 'asc') {
+      order = -1;
+    }
+
+    sortedDisks.sort((a,b) => {
+      if(a[this.state.orderBy].toLowerCase() < b[this.state.orderBy].toLowerCase()) {
+        return -1 * order;
+      } else {
+        return 1 * order;
+      }
+    });
+
     return (
       <div>
         <h1>Disks are { this.state.currentlyProcessing ? '' : 'NOT '}being processed at the moment</h1>
@@ -94,7 +112,7 @@ class Disks extends Component {
         </ul>
         <button onClick={this.toggleProcessing}>{ this.state.currentlyProcessing ? 'Stop ' : 'Start ' }Processing</button>
         <h2>Second Way of Handling Disks</h2>
-        <ListDisks disks={this.state.data} collection={this.state.collection} deleteDisk={this.deleteDisk}/>
+        <ListDisks disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk}/>
         <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
         <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
       </div>
