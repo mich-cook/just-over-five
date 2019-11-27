@@ -12,3 +12,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* mich stuff to move somewhere else */
+.modal.hidden {
+  display: none;
+}

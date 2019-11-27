@@ -2,17 +2,22 @@ import React, { Component } from 'react';
 import DiskListItem from './DiskListItem';
 
 import ListDisks from './ListDisks';
+import AddDisk from './AddDisk';
 
 class Disks extends Component {
 
   constructor() {
     super();
     this.deleteDisk = this.deleteDisk.bind(this);
+    this.showAddDiskForm = this.showAddDiskForm.bind(this);
+    this.hideAddDiskForm = this.hideAddDiskForm.bind(this);
+    this.addDisk = this.addDisk.bind(this);
     this.state = {
       currentlyProcessing: false,
       collection: "Family",
       data: [],
-      loading: false
+      loading: false,
+      showAddDiskForm: false
     };
   }
 
@@ -61,6 +66,22 @@ class Disks extends Component {
     this.setState({ data: tmpDisks });
   };
 
+  showAddDiskForm() {
+    this.setState({ showAddDiskForm: true });
+  }
+
+  hideAddDiskForm() {
+    this.setState({ showAddDiskForm: false });
+  }
+// another option:
+// toggleAddDiskFormDisplay() { this.setState({ showAddDiskform: !this.state.showAddDiskForm }); }
+
+  addDisk(disk) {
+    let tmpDisks = this.state.data;
+    tmpDisks.push(disk);
+    this.setState({ data: tmpDisks });
+  }
+
   render() {
     const games = this.state.data;
 
@@ -74,6 +95,8 @@ class Disks extends Component {
         <button onClick={this.toggleProcessing}>{ this.state.currentlyProcessing ? 'Stop ' : 'Start ' }Processing</button>
         <h2>Second Way of Handling Disks</h2>
         <ListDisks disks={this.state.data} collection={this.state.collection} deleteDisk={this.deleteDisk}/>
+        <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
+        <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
       </div>
     );
 
