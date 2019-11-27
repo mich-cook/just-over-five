@@ -3,6 +3,7 @@ import DiskListItem from './DiskListItem';
 
 import ListDisks from './ListDisks';
 import AddDisk from './AddDisk';
+import SearchDisks from './SearchDisks';
 
 class Disks extends Component {
 
@@ -12,6 +13,7 @@ class Disks extends Component {
     this.showAddDiskForm = this.showAddDiskForm.bind(this);
     this.hideAddDiskForm = this.hideAddDiskForm.bind(this);
     this.addDisk = this.addDisk.bind(this);
+    this.changeOrder = this.changeOrder.bind(this);
     this.state = {
       currentlyProcessing: false,
       collection: "Family",
@@ -86,6 +88,18 @@ class Disks extends Component {
     this.setState({ data: tmpDisks });
   }
 
+//  changeOrder(by, dir) {
+  changeOrder(e) {
+    const target = e.target;
+    const value = target.value;
+
+// TODO: handle order dir changes
+
+    this.setState({
+      orderBy: value
+    });
+  }
+
   render() {
     const games = this.state.data;
 
@@ -96,7 +110,7 @@ class Disks extends Component {
     }
 
     sortedDisks.sort((a,b) => {
-      if(a[this.state.orderBy].toLowerCase() < b[this.state.orderBy].toLowerCase()) {
+      if(a[this.state.orderBy] < b[this.state.orderBy]) {
         return -1 * order;
       } else {
         return 1 * order;
@@ -115,6 +129,7 @@ class Disks extends Component {
         <ListDisks disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk}/>
         <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
         <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
+        <SearchDisks orderBy={this.state.orderBy} orderDir={this.state.orderDir} changeOrder={this.changeOrder} />
       </div>
     );
 
