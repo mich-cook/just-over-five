@@ -15,6 +15,7 @@ class Disks extends Component {
     this.addDisk = this.addDisk.bind(this);
     this.changeOrder = this.changeOrder.bind(this);
     this.searchDisks = this.searchDisks.bind(this);
+    this.updateInfo = this.updateInfo.bind(this);
     this.state = {
       currentlyProcessing: false,
       collection: "Family",
@@ -108,6 +109,17 @@ class Disks extends Component {
     this.setState({ keyword: value });
   }
 
+  updateInfo(name, value, id) {
+    let tmpDisks = this.state.data;
+
+// TODO: Finish this.
+
+//    let index = index using id
+// find the thing to update and update it
+//    tmpDisks[index][name] = value;
+    this.setState({ data: tmpDisks});
+  }
+
   render() {
     const games = this.state.data;
 
@@ -145,7 +157,7 @@ class Disks extends Component {
         </ul>
         <button onClick={this.toggleProcessing}>{ this.state.currentlyProcessing ? 'Stop ' : 'Start ' }Processing</button>
         <h2>Second Way of Handling Disks</h2>
-        <ListDisks disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk}/>
+        <ListDisks disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />
         <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
         <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
         <SearchDisks orderBy={this.state.orderBy} orderDir={this.state.orderDir} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />

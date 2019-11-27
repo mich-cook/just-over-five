@@ -11,7 +11,12 @@ class ListDisks extends Component {
       <ul>
         {this.props.disks.map((item,i) => (
           <li key={i}>
-            {item.title} | {item.games[0]} | {item.blocksFree} blocks free ({collection} collection)
+            <span className="title" contentEditable suppressContentEditableWarning
+              onBlur={ e => this.props.updateInfo('title', e.target.innerText)}>{item.title}</span> | 
+            <span className="games" contentEditable suppressContentEditableWarning
+              onBlur={ e => this.props.updateInfo('games', e.target.innerText)}>{item.games[0]}</span> | 
+            <span className="blocks-free" contentEditable suppressContentEditableWarning
+              onBlur={ e => this.props.updateInfo('blocksFree', e.target.innerText)}>{item.blocksFree}</span> blocks free ({collection} collection)
             <button onClick={(e) => this.props.deleteDisk(item)}>Delete Disk</button>
           </li>
         ))}
