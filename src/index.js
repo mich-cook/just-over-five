@@ -3,16 +3,12 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import Disk from './Disk';
 import Disks from './Disks';
 import AddDiskForm from './AddDiskForm';
 
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<div>
-	<Disk game="DROL" />
-	<Disk game="Pogo Joe" />
-	<Disk game="Choplifter" />
     <Disks />
     <AddDiskForm />
 </div>, document.getElementById('disks'));
