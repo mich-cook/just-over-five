@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DiskListItem from './DiskListItem';
 
 import ListDisks from './ListDisks';
+import DiskTable from './DiskTable';
 import AddDisk from './AddDisk';
 import SearchDisks from './SearchDisks';
 
@@ -172,6 +173,7 @@ class Disks extends Component {
         <button onClick={this.toggleProcessing}>{ this.state.currentlyProcessing ? 'Stop ' : 'Start ' }Processing</button>
         <h2>Second Way of Handling Disks</h2>
         <ListDisks disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />
+        <DiskTable disks={sortedDisks} sortDisks={this.sortDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />
         <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
         <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
         <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />
