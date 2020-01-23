@@ -8,7 +8,7 @@ class DiskListItem extends Component {
     const { collection = "Unspecified" } = this.props
 
     return (
-        <li>{title} | {programs[0]} | {blocksFree} blocks free ({collection} collection)</li>
+        <li>{title} | {blocksFree} blocks free ({collection} collection)</li>
     );
   }
 }
