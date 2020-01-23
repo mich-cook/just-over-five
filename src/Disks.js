@@ -9,6 +9,7 @@ class Disks extends Component {
 
   constructor() {
     super();
+    this.sortDisks = this.sortDisks.bind(this);
     this.deleteDisk = this.deleteDisk.bind(this);
     this.showAddDiskForm = this.showAddDiskForm.bind(this);
     this.hideAddDiskForm = this.hideAddDiskForm.bind(this);
@@ -25,7 +26,7 @@ class Disks extends Component {
 
 /* sorting */
       orderBy: 'title',
-      orderDir: 'asc',
+      orderAsc: true,  // instead of tracking ascending/descending, we can toggle a Boolean ascending flag
 
 /* filtering */
       keyword: ''
@@ -93,6 +94,19 @@ class Disks extends Component {
     this.setState({ data: tmpDisks });
   }
 
+  sortDisks(by, asc) {
+    if (by === this.state.orderBy) {
+        // clicked on the currently sorted column
+        // so reverse the sort order
+        this.setState(prevState => ({ orderAsc: !prevState.orderAsc }));
+    } else {
+        // first time clicking on this sort field
+        // default to ascending
+        this.setState({ orderBy: by, orderAsc: true });
+    }
+  };
+
+
 //  changeOrder(by, dir) {
   changeOrder(e) {
     const target = e.target;
@@ -125,7 +139,7 @@ class Disks extends Component {
 
     let order = 1; // ascending by default
     let sortedDisks = this.state.data; // games;
-    if (this.state.orderDir !== 'asc') {
+    if (this.state.orderAsc === false) {
       order = -1;
     }
 
@@ -160,7 +174,7 @@ class Disks extends Component {
         <ListDisks disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />
         <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
         <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
-        <SearchDisks orderBy={this.state.orderBy} orderDir={this.state.orderDir} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />
+        <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />
       </div>
     );
 
