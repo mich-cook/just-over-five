@@ -1,11 +1,10 @@
 body {
   margin: 60px;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: #867ade;
   color: #867ade;
 }
@@ -22,4 +21,84 @@ code {
 /* mich stuff to move somewhere else */
 .modal.hidden {
   display: none;
+}
+
+#overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: #867ade;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #867ade;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-content {
+  max-height: 50vh;
+  width: 50vw;
+  background-color: #483aaa;
+  margin: 20px;
+  padding: 20px;
+  position: absolute;  /* don't need this, but it will help its children position abs or rel */
+  border-radius: 8px;
+}
+
+#addDiskForm .overlay-content .close-overlay {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 28px;
+  height: 28px;
+  padding: 6px; margin: 0;
+  border-radius: 50%;
+  border: 3px solid #483aaa;
+  background-color: #867ade;
+  font-weight: bold;
+  box-shadow: -2px 2px 2px 0 #867ade;
+  line-height: 0;
+  color: #483aaa;
+  padding-top: 2px;
+  font-size: 1.5rem;
+  padding-left: 4px;
+}
+
+#addDiskForm .overlay-content form label {
+  display: block;
+  padding-bottom: 16px;
+  font-weight: bold;
+}
+
+#addDiskForm #diskupload {
+  display: block;
+}
+
+#addDiskForm .overlay-content form button {
+  display: block;
+  margin-left: auto;
+  background-color: #72b14b;
+  border-color: #aae18a;
+  padding: 6px 20px;
+  color: #aae18a;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+#addDiskForm .overlay-content .error {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #c18178;
+  text-shadow: 2px 2px 3px #924a40;
+  margin-bottom: 0.5rem;
 }

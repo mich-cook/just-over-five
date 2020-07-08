@@ -5,6 +5,7 @@ import ListDisks from './ListDisks';
 import DiskTable from './DiskTable';
 import AddDisk from './AddDisk';
 import SearchDisks from './SearchDisks';
+import UploadDisk from './UploadDisk';
 
 class Disks extends Component {
 
@@ -24,6 +25,7 @@ class Disks extends Component {
       data: [],
       loading: false,
       showAddDiskForm: false,
+      showUploadOverlay: false,
 
 /* sorting */
       orderBy: 'title',
@@ -135,6 +137,15 @@ class Disks extends Component {
     this.setState({ data: tmpDisks});
   }
 
+  showUploadOverlay = () => {
+    this.setState({ showUploadOverlay: true });
+  }
+
+  hideUploadOverlay = () => {
+    this.setState({ showUploadOverlay: false });
+  }
+
+
   render() {
     const games = this.state.data;
 
@@ -177,6 +188,8 @@ class Disks extends Component {
         <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
         <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
         <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />
+        <button onClick={this.showUploadOverlay}>Upload Disk</button>
+        <UploadDisk show={this.state.showUploadOverlay} handleClose={this.hideUploadOverlay} />
       </div>
     );
 
