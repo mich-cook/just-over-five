@@ -19,7 +19,7 @@ export default class UploadDisk extends Component {
 //    formData.append("title", JSON.stringify(title));  // do we want this? maybe not.
 
 		// placeholder endpoint until the real one is done. plenty of error testing for now. :)
-    let result = await fetch("/api/disks", { "method": "POST", "body": formData });
+    let result = await fetch("//localhost:8000/api/v1/c64", { "method": "POST", "body": formData });
 
 		// more robust error handling once we have an actual API up and running (later today?)
     if (result.status !== 200) {
