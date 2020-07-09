@@ -4,7 +4,8 @@
   "description": "Backend APIs for JOF",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,8 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.7-alpha.3"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
