@@ -12,6 +12,7 @@ export default class UploadDisk extends Component {
 
   async uploadHandler(e) {
     e.preventDefault();   // don't form submit and navigate
+    this.setState({ "error": "" });
     let disk = document.getElementById("diskupload").files[0];   // for now just one file. maybe multiple in the future.
 
     let formData = new FormData();
