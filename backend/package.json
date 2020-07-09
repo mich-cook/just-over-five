@@ -1,0 +1,24 @@
+{
+  "name": "just-over-five-backend",
+  "version": "0.1.0",
+  "description": "Backend APIs for JOF",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mich-cook/just-over-five.git"
+  },
+  "keywords": [
+    "c64",
+    "commodore",
+    "5.25"
+  ],
+  "author": "mich-cook",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/mich-cook/just-over-five/issues"
+  },
+  "homepage": "https://github.com/mich-cook/just-over-five#readme"
+}
