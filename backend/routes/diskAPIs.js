@@ -7,7 +7,7 @@ export default function(app) {
   app.use(bodyParser.json());
   app.use(fileUpload({
     "createParentPath": true,
-    "limits": { "fileSize": 1 * 1024 * 1024 * 1024 }  // 1MB file upload limit
+    "limits": { "fileSize": 250 * 1024 }  // 250kB file upload limit (largest disk image is 197376
   }));
 
   app.route('/api/v1/c64')
