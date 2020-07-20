@@ -15,31 +15,19 @@ export default function(app) {
       return res.json({ "status": "OK", "message": "c64 v1 API is running" });
     })
     .post( async (req, res) => {
-      if (!req.files) {  // fix this for something other than sloppy falsy check
-        return res.send({ "status": "FAIL", "message": "File not found." });
+      if (!req.files) {  // TODO: fix this for something other than sloppy falsy check
+        return res.status(404).send({ "status": "FAIL", "message": "File not found." });
       }
-      let disk = req.files.disk;  // disk is the field name of the file dealie
-// disk now has .name  .mimetype  .size  .truncated  .md5 attributes
-// disk now has .mv function that takes location argument for target location to mv
-// disk now has .data  which is a "buffer representation" of the file
-      disk.mv(`/tmp/disk_images/${disk.md5}.d64`);
 
-      // save the file to storage bucket (not fs)
-/*
-      if (storage.fail) {
-        // log message / alert that storage is failing
-        return res.send({ "status": "FAIL", "message": "Disk upload failed on our side." });
+      try {
+        const disk = req.files.disk;  // disk is the field name of the file dealie
+        // upload file
+        // create disk entry in DB
+        return res.status(200).json({ "status": "OK", "message": "Disk accepted for processing." });
+      } catch(err) {
+        console.log(err);
+        return res.status(504).send({ "status": "FAIL", "message": "Disk upload failed on our side." });
       }
-*/
 
-      // send message to mq about new disk upload
-/*
-      if (mq.fail) {
-        // log message / alert that mq inserts are failing
-        return res.send({ "status": "FAIL", "message": "Disk upload failed on our side." });
-      }
-*/
-
-      return res.send({ "status": "OK", "message": "Disk accepted for processing." });
     });
-}
+};
