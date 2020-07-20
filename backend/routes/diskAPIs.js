@@ -12,7 +12,7 @@ export default function(app) {
 
   app.route('/api/v1/c64')
     .get((req, res) => {
-      return res.json({ "hello": "there" });
+      return res.json({ "status": "OK", "message": "c64 v1 API is running" });
     })
     .post( async (req, res) => {
       if (!req.files) {  // fix this for something other than sloppy falsy check
