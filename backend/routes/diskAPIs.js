@@ -2,6 +2,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
 
+import uploadDiskImage from '../helpers/gcpUpload.js';
+
 export default function(app) {
   app.use(cors());
   app.use(bodyParser.json());
@@ -22,6 +24,7 @@ export default function(app) {
       try {
         const disk = req.files.disk;  // disk is the field name of the file dealie
         // upload file
+        const imageUrl = await uploadDiskImage({ "originalname": `to-process/${disk.md5}.d64`, "buffer": disk.data });
         // create disk entry in DB
         return res.status(200).json({ "status": "OK", "message": "Disk accepted for processing." });
       } catch(err) {
