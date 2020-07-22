@@ -3,8 +3,7 @@ const { Storage } = Cloud;
 
 // TODO: find better way that doesn't have ./config/ prefix
 const key = "./config/just-over-five.json";
-const project = "just-over-five";
-const storage = new Storage({ "keyFilename": key, "projectId": project });
+const storage = new Storage({ "keyFilename": key });
 const bucket = storage.bucket("disks-pending-processing");
 
 const uploadDiskImage = async file => {
