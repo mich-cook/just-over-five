@@ -18,6 +18,21 @@ const createDisk = async id => {
     console.log(`error from mongo client: ${err}`);
     return new Promise((resolve, reject) => reject(`Trouble trying to store data for ${id}.d64 in mongo`));   // problem with insert
   }
-}
+};
 
-export default createDisk;
+const isDuplicate = async id => {
+  const query = { "_id": id };
+
+  try {
+    const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true, "useUnifiedTopology": true });
+    const result = await client.db(database).collection(diskCollection).findOne(query);
+    client.close();
+    return new Promise((resolve, reject) => resolve(true));   // insert successful
+  } catch(err) {
+    console.log(`error from mongo client: ${err}`);
+    return new Promise((resolve, reject) => reject(`Trouble trying to find ${id}.d64 in mongo`));   // problem with insert
+  }
+};
+
+// export default createDisk;
+export { createDisk, isDuplicate };
