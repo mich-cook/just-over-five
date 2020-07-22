@@ -13,7 +13,7 @@ const uploadDiskImage = async file => {
   if (fileExists === false) {
     return fileHandle.save(buffer);
   }
-  return new Promise().resolve(originalname);
+  return new Promise((resolve, reject) => resolve(originalname));
 };
 
 export default uploadDiskImage;
