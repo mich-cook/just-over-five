@@ -27,10 +27,10 @@ const isDuplicate = async id => {
     const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true, "useUnifiedTopology": true });
     const result = await client.db(database).collection(diskCollection).findOne(query);
     client.close();
-    return new Promise((resolve, reject) => resolve(true));   // insert successful
+    return new Promise((resolve, reject) => resolve(result));   // result of successful query
   } catch(err) {
     console.log(`error from mongo client: ${err}`);
-    return new Promise((resolve, reject) => reject(`Trouble trying to find ${id}.d64 in mongo`));   // problem with insert
+    return new Promise((resolve, reject) => reject(`Trouble trying to find ${id}.d64 in mongo`));   // problem with query
   }
 };
 
