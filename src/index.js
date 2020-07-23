@@ -10,7 +10,6 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<div>
     <Disks />
-    <AddDiskForm />
 </div>, document.getElementById('disks'));
 
 // If you want your app to work offline and load faster, you can change
