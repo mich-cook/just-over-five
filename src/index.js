@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import Disks from './Disks';
-import AddDiskForm from './AddDiskForm';
 
 import * as serviceWorker from './serviceWorker';
 
