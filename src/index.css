@@ -103,3 +103,23 @@ code {
   text-shadow: 2px 2px 3px #924a40;
   margin-bottom: 0.5rem;
 }
+
+p.ready {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+p.cursor {
+  animation-name: cursor-blink;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(3, jump-start);
+
+  background-color: #867ade;
+  display: inline-block;
+  margin-top: 0;
+}
+
+@keyframes cursor-blink {
+  to { visibility: hidden; }
+}
