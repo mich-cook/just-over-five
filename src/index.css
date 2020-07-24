@@ -63,14 +63,13 @@ code {
   right: -12px;
   width: 28px;
   height: 28px;
-  padding: 6px; margin: 0;
+  margin: 0;
   border-radius: 50%;
   border: 3px solid #483aaa;
   background-color: #867ade;
   font-weight: bold;
   line-height: 0;
   color: #483aaa;
-  padding-top: 2px;
   font-size: 1.5rem;
   padding-left: 4px;
 }
