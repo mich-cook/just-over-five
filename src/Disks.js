@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import DiskListItem from './DiskListItem';
+// import DiskListItem from './DiskListItem';
 
-import ListDisks from './ListDisks';
-import DiskTable from './DiskTable';
-import AddDisk from './AddDisk';
+// import ListDisks from './ListDisks';
+// import DiskTable from './DiskTable';
+// import AddDisk from './AddDisk';
 import SearchDisks from './SearchDisks';
 import UploadDisk from './UploadDisk';
 
@@ -147,14 +147,15 @@ class Disks extends Component {
 
 
   render() {
-    const games = this.state.data;
+    // const games = this.state.data;
 
+/*
     let order = 1; // ascending by default
-    let sortedDisks = this.state.data; // games;
     if (this.state.orderAsc === false) {
       order = -1;
     }
 
+    let sortedDisks = this.state.data; // games;
     sortedDisks = sortedDisks.sort((a,b) => {
       if(a[this.state.orderBy] < b[this.state.orderBy]) {
         return -1 * order;
@@ -166,27 +167,28 @@ class Disks extends Component {
 // TODO: handle searching games arrays
 // TODO: decide and handle matching blocks free
         disk['title'].toLowerCase()
-        .includes(this.state.keyword.toLowerCase()) /* || 
+        .includes(this.state.keyword.toLowerCase()) ** || 
         disk['game'].toLowerCase()
         .includes(this.state.keyword.toLowerCase()) || 
         disk['blocksFree'].toLowerCase
-        .includes(this.state.keyword.toLowerCase()) || */
+        .includes(this.state.keyword.toLowerCase()) || **
       );
-    });
+    });  */
 
     return (
       <div>
-        <h1>Disks are { this.state.currentlyProcessing ? '' : 'NOT '}being processed at the moment</h1>
-        <h2>First Way of Displaying Disks</h2>
+        <p style={{ "textAlign": "center" }}>**** My d64 Floppy Disk Catalog ****</p>
+{/*        <h1>Disks are { this.state.currentlyProcessing ? '' : 'NOT '}being processed at the moment</h1> */}
+{/*        <h2>First Way of Displaying Disks</h2>
         <ul style={{color: this.props.color }}>
           { games.map((game,i) => <DiskListItem key={i} info={game} collection={this.state.collection} />) }
-        </ul>
-        <button onClick={this.toggleProcessing}>{ this.state.currentlyProcessing ? 'Stop ' : 'Start ' }Processing</button>
-        <h2>Second Way of Handling Disks</h2>
+        </ul>*/}
+{/*        <button onClick={this.toggleProcessing}>{ this.state.currentlyProcessing ? 'Stop ' : 'Start ' }Processing</button> */}
+{/*        <h2>Second Way of Handling Disks</h2>
         <ListDisks disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />
-        <DiskTable disks={sortedDisks} sortDisks={this.sortDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />
-        <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
-        <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} />
+        <DiskTable disks={sortedDisks} sortDisks={this.sortDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />  */}
+{/*        <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
+        <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} /> */}
         <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />
         <button onClick={this.showUploadOverlay}>Upload Disk</button>
         <UploadDisk show={this.state.showUploadOverlay} handleClose={this.hideUploadOverlay} />
