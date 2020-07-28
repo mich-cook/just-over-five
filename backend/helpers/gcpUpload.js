@@ -1,10 +1,12 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import Cloud from "@google-cloud/storage";
 const { Storage } = Cloud;
 
-// TODO: find better way that doesn't have ./config/ prefix
-const key = "./config/just-over-five.json";
+const key = process.env.GCP_KEY_LOCATION;
 const storage = new Storage({ "keyFilename": key });
-const bucket = storage.bucket("disks-pending-processing");
+const bucket = storage.bucket(process.env.GCP_BUCKET);
 
 const uploadDiskImage = async file => {
   const { originalname, buffer } = file;
