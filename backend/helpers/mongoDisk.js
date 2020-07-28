@@ -6,6 +6,7 @@ const { MongoClient } = _mongo;
 
 const database = process.env.MONGO_DATABASE;
 const diskCollection = process.env.MONGO_DISK_COLLECTION;
+const userCollection = process.env.MONGO_USER_COLLECTION;
 
 const createDisk = async id => {
   let payload = { "_id": id, "validated": null };
@@ -34,5 +35,20 @@ const isDuplicate = async id => {
   }
 };
 
+const getUserDisks = async id => {
+  const query = { "_id": id };
+
+  try {
+    const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true, "useUnifiedTopology": true });
+    const result = await client.db(database).collection(userCollection).findOne(query);
+    client.close();
+    return new Promise((resolve, reject) => resolve(result));   // result of successful query
+  } catch(err) {
+    console.log(`error from mongo client: ${err}`);
+    return new Promise((resolve, reject) => reject(`Trouble getting disks for user: ${id}`));
+  }
+
+};
+
 // export default createDisk;
-export { createDisk, isDuplicate };
+export { createDisk, isDuplicate, getUserDisks };
