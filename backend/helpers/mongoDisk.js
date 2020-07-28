@@ -36,13 +36,19 @@ const isDuplicate = async id => {
 };
 
 const getUserDisks = async id => {
-  const query = { "_id": id };
+  const pipeline = [
+    { "$match": { "_id": id }},
+    { "$lookup": { "from": "disks", "localField": "disks", "foreignField": "_id", "as": "disks" }},
+    { "$match": { "disks.validated": true }},
+    { "$project": { "disks.files": 0, "disks.validated": 0, "_id": 0 }}
+  ];
 
   try {
     const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true, "useUnifiedTopology": true });
-    const result = await client.db(database).collection(userCollection).findOne(query);
+    const user = await client.db(database).collection(userCollection).aggregate(pipeline).toArray();
     client.close();
-    return new Promise((resolve, reject) => resolve(result));   // result of successful query
+    const response = user[0] || null;
+    return new Promise((resolve, reject) => resolve(response));   // result of successful query
   } catch(err) {
     console.log(`error from mongo client: ${err}`);
     return new Promise((resolve, reject) => reject(`Trouble getting disks for user: ${id}`));

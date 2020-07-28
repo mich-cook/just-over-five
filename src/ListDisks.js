@@ -22,22 +22,14 @@ class ListDisks extends Component {
 
   render() {
 
-    // allow each one to have a default instead of anything-matches object
-    // const { title = "No title provided", programs = [ "No programs provided"], blocksFree = 664 } = this.props.info;
-    // const { collection = "Unspecified" } = this.props
-
     return (
       <ul>
-        {this.state.disks.map((item,i) => (
-          <li key={i}>{item}</li>
+        {this.state.disks.map((item) => (
+          <li key={item._id}>
+            <span className="title">{item.name}</span> | 
+            <span className="blocks-free"> {item.free}</span>
+          </li>
         ))}
-{/*            <span className="title" contentEditable suppressContentEditableWarning
-              onBlur={ e => this.props.updateInfo('title', e.target.innerText)}>{item.title}</span> | 
-            <span className="programs" contentEditable suppressContentEditableWarning
-              onBlur={ e => this.props.updateInfo('programs', e.target.innerText)}>{item.programs[0]}</span> | 
-            <span className="blocks-free" contentEditable suppressContentEditableWarning
-              onBlur={ e => this.props.updateInfo('blocksFree', e.target.innerText)}>{item.blocksFree}</span> blocks free ({collection} collection)
-            <button onClick={(e) => this.props.deleteDisk(item)}>Delete Disk</button> */}
       </ul>
     );
   }
