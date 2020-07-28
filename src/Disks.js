@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import ListDisks from './ListDisks';
 // import DiskTable from './DiskTable';
 // import AddDisk from './AddDisk';
-import SearchDisks from './SearchDisks';
+// import SearchDisks from './SearchDisks';
 import UploadDisk from './UploadDisk';
 
 class Disks extends Component {
@@ -189,7 +189,7 @@ class Disks extends Component {
 {/*        <DiskTable disks={sortedDisks} sortDisks={this.sortDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />  */}
 {/*        <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
         <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} /> */}
-        <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />
+{/*        <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />  */}
         <button onClick={this.showUploadOverlay}>Upload Disk</button>
         <UploadDisk show={this.state.showUploadOverlay} handleClose={this.hideUploadOverlay} />
       </div>
