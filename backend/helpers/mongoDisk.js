@@ -4,8 +4,8 @@ dotenv.config();    // get the mongo config
 import _mongo from 'mongodb';
 const { MongoClient } = _mongo;
 
-const database = "just-over-five";
-const diskCollection = "disks";
+const database = process.env.MONGO_DATABASE;
+const diskCollection = process.env.MONGO_DISK_COLLECTION;
 
 const createDisk = async id => {
   let payload = { "_id": id, "validated": null };
