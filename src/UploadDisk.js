@@ -5,9 +5,25 @@ export default class UploadDisk extends Component {
   constructor() {
     super();
     this.uploadHandler = this.uploadHandler.bind(this);
+    this.catchEscape = this.catchEscape.bind(this);
 	  this.state = {
   	  "error": ""
 	  }
+  }
+
+  // power users expect to be able to close modal with escape key
+  catchEscape(event) {
+    if (event.keyCode === 27) {
+      this.closeHandler();
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.catchEscape);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.catchEscape);
   }
 
   async uploadHandler(e) {
