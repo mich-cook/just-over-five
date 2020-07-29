@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 import ListDisks from './ListDisks';
 // import DiskTable from './DiskTable';
-// import AddDisk from './AddDisk';
 // import SearchDisks from './SearchDisks';
 import UploadDisk from './UploadDisk';
 import DiskListing from './DiskListing';
@@ -14,9 +13,6 @@ class Disks extends Component {
     super();
     this.sortDisks = this.sortDisks.bind(this);
     this.deleteDisk = this.deleteDisk.bind(this);
-    this.showAddDiskForm = this.showAddDiskForm.bind(this);
-    this.hideAddDiskForm = this.hideAddDiskForm.bind(this);
-    this.addDisk = this.addDisk.bind(this);
     this.changeOrder = this.changeOrder.bind(this);
     this.searchDisks = this.searchDisks.bind(this);
     this.updateInfo = this.updateInfo.bind(this);
@@ -26,7 +22,6 @@ class Disks extends Component {
       collection: "Family",
       data: [],
       loading: false,
-      showAddDiskForm: false,
 
       showUploadOverlay: false,
       showDiskListingOverlay: false,
@@ -86,21 +81,8 @@ class Disks extends Component {
     this.setState({ data: tmpDisks });
   };
 
-  showAddDiskForm() {
-    this.setState({ showAddDiskForm: true });
-  }
-
-  hideAddDiskForm() {
-    this.setState({ showAddDiskForm: false });
-  }
 // another option:
 // toggleAddDiskFormDisplay() { this.setState({ showAddDiskform: !this.state.showAddDiskForm }); }
-
-  addDisk(disk) {
-    let tmpDisks = this.state.data;
-    tmpDisks.push(disk);
-    this.setState({ data: tmpDisks });
-  }
 
   sortDisks(by, asc) {
     if (by === this.state.orderBy) {
@@ -208,8 +190,6 @@ class Disks extends Component {
 {/*        <h2>Second Way of Handling Disks</h2> */}
         <ListDisks user="fake-id-until-user-system-implemented" showListing={this.showListing} /> {/*disks={sortedDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} /> */}
 {/*        <DiskTable disks={sortedDisks} sortDisks={this.sortDisks} collection={this.state.collection} deleteDisk={this.deleteDisk} updateInfo={this.updateInfo} />  */}
-{/*        <button onClick={this.showAddDiskForm}>New Way Add Disk</button>
-        <AddDisk showAddDiskForm={this.state.showAddDiskForm} hideAddDiskForm={this.hideAddDiskForm} addDisk={this.addDisk} /> */}
 {/*        <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />  */}
         <button onClick={this.showUploadOverlay}>Upload Disk</button>
         <UploadDisk show={this.state.showUploadOverlay} handleClose={this.hideUploadOverlay} />
