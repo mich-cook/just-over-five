@@ -51,7 +51,7 @@ code {
   max-height: 50vh;
   width: 50vw;
   background-color: #483aaa;
-  margin: 20px;
+  margin: 20px auto;
   padding: 20px;
   position: absolute;  /* don't need this, but it will help its children position abs or rel */
   border-radius: 8px;
