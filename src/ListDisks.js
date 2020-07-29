@@ -21,11 +21,10 @@ class ListDisks extends Component {
   }
 
   render() {
-
     return (
       <ul>
-        {this.state.disks.map((item) => (
-          <li key={item._id}>
+        {this.state.disks.map(item => (
+          <li key={item._id} onClick={e => this.props.showListing(item._id)}>
             <span className="title">{item.name}</span> | 
             <span className="blocks-free"> {item.free}</span>
           </li>

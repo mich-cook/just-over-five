@@ -57,7 +57,8 @@ code {
   border-radius: 8px;
 }
 
-#addDiskForm .overlay-content .close-overlay {
+#addDiskForm .overlay-content .close-overlay,
+#diskListing .overlay-content .close-overlay {
   position: absolute;
   top: -12px;
   right: -12px;
@@ -121,4 +122,35 @@ p.cursor {
 
 @keyframes cursor-blink {
   to { visibility: hidden; }
+}
+
+.listing-header {
+  background-color: #867ade;
+  display: inline-block;
+  color: #483aaa;
+}
+
+.listing-header pre {
+  margin: 0;
+}
+
+.listing-header pre span {
+  background-color: #483aaa;
+  color: #867ade;
+}
+
+#diskListing ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#diskListing ul li pre {
+  margin: 0;
+  padding: 0;
+}
+
+.listing-body p {
+  margin: 0;
+  text-transform: uppercase;
 }
