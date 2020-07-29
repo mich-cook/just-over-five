@@ -15,18 +15,18 @@ class Disks extends Component {
     this.state = {
       loading: false,  // use this later
 
-      showUploadOverlay: false,
-      showDiskListingOverlay: false,
+      showOverlayUpload: false,
+      showOverlayDiskListing: false,
       listingData: { "files": [], "title": "" },
     };
   }
 
-  showUploadOverlay = () => {
-    this.setState({ showUploadOverlay: true });
+  showOverlayUpload = () => {
+    this.setState({ showOverlayUpload: true });
   }
 
-  hideUploadOverlay = () => {
-    this.setState({ showUploadOverlay: false });
+  hideOverlayUpload = () => {
+    this.setState({ showOverlayUpload: false });
   }
 
   showListing = (which) => {
@@ -34,30 +34,28 @@ class Disks extends Component {
       .then(response => response.json())
       .then(data => {
         if (data !== null) {
-          this.setState({ "showDiskListingOverlay": true, "listingData": data });
+          this.setState({ "showOverlayDiskListing": true, "listingData": data });
         }  // else leave these state fields alone
       });
 
   }
 
   hideListing = () => {
-    this.setState({ "showDiskListingOverlay": false });
+    this.setState({ "showOverlayDiskListing": false });
   }
 
   render() {
-
     return (
       <div>
         <p style={{ "textAlign": "center" }}>**** My d64 Floppy Disk Catalog ****</p>
         <ListDisks user="fake-id-until-user-system-implemented" showListing={this.showListing} /> {/*disks={sortedDisks} collection={this.state.collection} /> */}
 {/*        <DiskTable disks={sortedDisks} sortDisks={this.sortDisks} collection={this.state.collection} />  */}
 {/*        <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />  */}
-        <button onClick={this.showUploadOverlay}>Upload Disk</button>
-        <UploadDisk show={this.state.showUploadOverlay} handleClose={this.hideUploadOverlay} />
-        <DiskListing show={this.state.showDiskListingOverlay} listing={this.state.listingData} handleClose={this.hideListing} />
+        <button onClick={this.showOverlayUpload}>Upload Disk</button>
+        <UploadDisk show={this.state.showOverlayUpload} handleClose={this.hideOverlayUpload} />
+        <DiskListing show={this.state.showOverlayDiskListing} listing={this.state.listingData} handleClose={this.hideListing} />
       </div>
     );
-
   }
 }
 
