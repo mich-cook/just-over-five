@@ -35,6 +35,20 @@ const isDuplicate = async id => {
   }
 };
 
+const getDiskContents = async id => {
+  const query = { "_id": id };
+
+  try {
+    const client = await MongoClient.connect(process.env.MONGO_URI, { "useNewUrlParser": true, "useUnifiedTopology": true });
+    const result = await client.db(database).collection(diskCollection).findOne(query);
+    client.close();
+    return new Promise((resolve, reject) => resolve(result));   // result of successful query
+  } catch(err) {
+    console.log(`error from mongo client: ${err}`);
+    return new Promise((resolve, reject) => reject(`Trouble trying to find ${id}.d64 in mongo`));   // problem with query
+  }
+};
+
 const getUserDisks = async id => {
   const pipeline = [
     { "$match": { "_id": id }},
@@ -57,4 +71,4 @@ const getUserDisks = async id => {
 };
 
 // export default createDisk;
-export { createDisk, isDuplicate, getUserDisks };
+export { createDisk, isDuplicate, getUserDisks, getDiskContents };
