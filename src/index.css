@@ -48,7 +48,7 @@ code {
 }
 
 .overlay-content {
-  max-height: 50vh;
+  height: 50vh;
   width: 50vw;
   background-color: #483aaa;
   padding: 20px;
@@ -147,6 +147,12 @@ p.cursor {
 #diskListing ul li pre {
   margin: 0;
   padding: 0;
+}
+
+.listing-body {
+  height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .listing-body p {
