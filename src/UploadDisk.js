@@ -60,8 +60,6 @@ export default class UploadDisk extends Component {
           <button aria-label="Close disk upload overlay" className="close-overlay" onClick={this.closeHandler}>×</button>
       	  <form onSubmit={this.uploadHandler}>
     	      <label htmlFor="diskupload">Upload A Disk To Your Collection</label>
-            <p className="ready">READY.</p>
-            <p className="cursor">&nbsp;</p>
   	        <input type="file" id="diskupload" name="disk" accept=".d64" required />
             <p className="error">{this.state.error}</p>
             <button type="submit">Upload</button>

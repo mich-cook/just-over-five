@@ -46,6 +46,8 @@ export default class DiskListing extends Component {
             })}
             </ul>
             <p>{this.props.listing.free} blocks free.</p>
+            <p className="ready">READY.</p>
+            <p className="cursor">&nbsp;</p>
           </div>
         </div>
       </div>
