@@ -7,7 +7,7 @@ import ListDisks from './ListDisks';
 import UploadDisk from './UploadDisk';
 import DiskListing from './DiskListing';
 
-class Disks extends Component {
+export default class Disks extends Component {
 
   constructor() {
     super();
@@ -58,5 +58,3 @@ class Disks extends Component {
     );
   }
 }
-
-export default Disks;
