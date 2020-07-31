@@ -30,12 +30,14 @@ export default class DiskListing extends Component {
   render() {
     const display = this.props.show ? "flex" : "none";  // showing the modal or not?
     const name = this.props.listing.title.padEnd(16, ' ');  // name of the whole disk
+    const id = this.props.listing.id;
+    const dostype = this.props.listing.dosType;
 
     return (
       <div id="diskListing" className="overlay" style={{display: display }}>
         <div className="overlay-content">
           <button aria-label="Close disk listing overlay" className="close-overlay" onClick={this.closeHandler}>×</button>
-          <div className="listing-header"><pre><span>0 </span>"{name}" 11 2A</pre></div>
+          <div className="listing-header"><pre><span>0 </span>"{name}" {id} {dosType}</pre></div>
           <div className="listing-body">
             <ul>
             {this.props.listing.files.map((file, i) => {
