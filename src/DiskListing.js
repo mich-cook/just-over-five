@@ -37,7 +37,7 @@ export default class DiskListing extends Component {
       <div id="diskListing" className="overlay" style={{display: display }}>
         <div className="overlay-content">
           <button aria-label="Close disk listing overlay" className="close-overlay" onClick={this.closeHandler}>×</button>
-          <div className="listing-header"><pre><span>0 </span>"{name}" {id} {dosType}</pre></div>
+          <div className="listing-header"><pre><span>0 </span>"{name}" {id} {dostype}</pre></div>
           <div className="listing-body">
             <ul>
             {this.props.listing.files.map((file, i) => {
