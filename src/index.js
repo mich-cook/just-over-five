@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import Disks from './Disks';
+import App from './App.js';
 
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<div>
-    <Disks />
+    <App />
 </div>, document.getElementById('disks'));
 
 // If you want your app to work offline and load faster, you can change
