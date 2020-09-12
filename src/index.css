@@ -159,3 +159,52 @@ p.cursor {
   margin: 0;
   text-transform: uppercase;
 }
+
+#login-page {
+  display: flex;
+}
+
+#login-page section {
+  width: 50vw;
+}
+
+#login-form {
+  margin: 20px;
+  padding: 20px;
+  box-shadow: #867ade 2px 2px 2px 2px;
+  text-align: center;
+}
+
+#login-form .input-group {
+  position: relative;
+  margin: 12px auto;
+}
+
+#login-form .input-group i,
+#login-form .input-group button {
+  position: absolute;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+#login-form .input-group i {
+  left: 7%;
+  font-style: normal;
+}
+
+#login-form .input-group button {
+  right: 8%;
+}
+
+#login-form .input-group input {
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 75%;
+}
+
+#passwordDisplayToggle {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
