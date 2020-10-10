@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { navigate } from '@reach/router';
+
+import firebase, { provider } from './Firebase.js';
 
 export default class Login extends Component {
 
@@ -7,34 +10,31 @@ export default class Login extends Component {
   constructor() {
     super();
     this.state = {
-      passwordDisplayed: false,
-      passwordDisplayTitle: `Show Password`,
-      passwordDisplayEmoji: `🐵`
+      "errorDisplay": "none"
     };
 
-    this.togglePasswordDisplay = this.togglePasswordDisplay.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  togglePasswordDisplay() {
-    if (this.state.passwordDisplayed === false) {
-
-      document.getElementById("password").setAttribute("type", "input");
-
-      this.setState({
-        passwordDisplayTitle: `Hide Password`,
-        passwordDisplayEmoji: `🙈`,
-        passwordDisplayed: true
-      });
-    } else {
-
-      document.getElementById("password").setAttribute("type", "password");
-
-      this.setState({
-        passwordDisplayTitle: `Show Password`,
-        passwordDisplayEmoji: `🐵`,
-        passwordDisplayed: false
-      });
-    }
+  onClick() {
+    firebase.auth().signInWithPopup(provider).then(result => {
+//
+// result.user stuff that's useful:
+// result.user.displayName
+// result.user.uid
+// result.user.photoURL
+//
+      this.setState({ "errorDisplay": "none" });
+    }).catch(error => {
+      this.setState({ "errorDisplay": "block" });
+//
+// error stuff that might be useful:
+// error.code
+// error.message
+// error.email
+// error.credential
+//
+    });
   }
 
   render() {
@@ -55,16 +55,8 @@ export default class Login extends Component {
         </section>
         <section id="login-form">
           <h1>Welcome to Just Over Five. Please log in to continue.</h1>
-          <div className="input-group">
-            <input type="text" placeholder="Handle" id="username" />
-            <i>👤</i>
-          </div>
-          <div className="input-group">
-            <input type="password" placeholder="Password" id="password" />
-            <i>🔒</i>
-            <button title={this.state.passwordDisplayTitle} type="button" id="passwordDisplayToggle" onClick={this.togglePasswordDisplay}>{this.state.passwordDisplayEmoji}</button>
-          </div>
-          <button>Login</button>
+          <button onClick={this.onClick}>Log in with Google</button>
+          <p style={{ "display": this.state.errorDisplay }}>Error logging in via Google. Please try again.</p>
         </section>
       </div>
     );
