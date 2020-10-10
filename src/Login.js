@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { navigate } from '@reach/router';
 
 import firebase, { provider } from './Firebase.js';
 
