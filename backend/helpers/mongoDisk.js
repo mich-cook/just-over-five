@@ -51,7 +51,7 @@ const getDiskContents = async id => {
 
 const getUserDisks = async id => {
   const pipeline = [
-    { "$match": { "_id": id }},
+    { "$match": { "google.uid": id }},
     { "$lookup": { "from": "disks", "localField": "disks", "foreignField": "_id", "as": "disks" }},
     { "$match": { "disks.validated": true }},
     { "$project": { "disks.files": 0, "disks.validated": 0, "_id": 0 }}
