@@ -44,7 +44,7 @@ export default class App extends Component {
       <Router>
         <Login path="/login" />
         <MyDisks path="/" />
-        <MyDisks path="/my" />
+        <MyDisks path="/my" uid={this.state.uid} name={this.state.displayName} photoURL={this.state.userPhoto} />
       </Router>
     );
   }
