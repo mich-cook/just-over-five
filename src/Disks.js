@@ -48,7 +48,7 @@ export default class Disks extends Component {
     return (
       <div>
         <p style={{ "textAlign": "center" }}>**** My d64 Floppy Disk Catalog ****</p>
-        <ListDisks user="fake-id-until-user-system-implemented" showListing={this.showListing} /> {/*disks={sortedDisks} collection={this.state.collection} /> */}
+        <ListDisks user={this.props.uid} showListing={this.showListing} /> {/*disks={sortedDisks} collection={this.state.collection} /> */}
 {/*        <DiskTable disks={sortedDisks} sortDisks={this.sortDisks} collection={this.state.collection} />  */}
 {/*        <SearchDisks orderBy={this.state.orderBy} orderAsc={this.state.orderAsc} changeOrder={this.changeOrder} searchDisks={this.searchDisks} />  */}
         <button onClick={this.showOverlayUpload}>Upload Disk</button>
